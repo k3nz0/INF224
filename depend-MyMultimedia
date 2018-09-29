@@ -1,2 +1,4 @@
+group.o: group.cpp group.h multimedia.h video.h
+film.o: film.cpp film.h video.h multimedia.h
 multimedia.o: multimedia.cpp multimedia.h
-main.o: main.cpp multimedia.h photo.h video.h
+main.o: main.cpp multimedia.h photo.h video.h film.h group.h

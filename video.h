@@ -15,9 +15,9 @@ public:
         Multimedia(name, fileName), duration(duration) {
 
     }
+    virtual ~Video() {}
 
-
-    void printVariables(ostream & flux) const {
+    void printVariables(ostream & flux) const override {
         Multimedia::printVariables(flux);
         flux << "duration : " << duration << endl;
     }

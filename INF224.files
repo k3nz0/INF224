@@ -5,3 +5,5 @@ video.h
 multimedia.cpp
 multimedia.h
 main.cpp
+group.h
+group.cpp
