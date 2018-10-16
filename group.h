@@ -7,8 +7,7 @@
 #include "video.h"
 using namespace std;
 
-
-template <typename T> class Group : public list<T>
+class Group : public list<Multimedia*>
 {
     string name;
 
@@ -23,7 +22,7 @@ public:
 
     void printGroup() {
         for(auto it = this->begin(); it != this->end(); it++) {
-            it->printVariables();
+            (*it)->printVariables(cout);
         }
     }
 

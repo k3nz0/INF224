@@ -44,9 +44,17 @@ int main(int argc, const char* argv[])
 //    film->printVariables(cout);
 //    delete film;
 
-//    Group <shared_ptr<Multimedia> > group("Vacances");
-//    cout << group.getName() << endl;
-//    shared_ptr<Video> t = new Video("video", "video.mp4", 100);
-//    group.push_back(t);
+
+//    Video *video = new Video("video", "video.mp4", 100);
+//    Photo *photo = new Photo("tpt", "tpt.jpg", 213, 100);
+//    Group *group = new Group(string("Vacances"));
+//    cout << group->getName() << endl;
+//    group->push_back(video);
+//    group->push_back(photo);
+//    group->printGroup();
+//    delete group;
+//    photo->printVariables(cout); // Photo n'est pas détruit quand le groupe est détruit
+
+
     return 0;
 }

@@ -73,7 +73,39 @@ La classe Film
  contient une allocation dynamique (malloc). Il faut donc ne pas oublier
 le déstructeur.
 
+--------------------------------------------------------
 
+Notes :
+
+int *a = new int(3); // pointeur sur variable initialisée à 3 ?
+delete a;
+
+int *b = new int[3];
+delete[] b;
+
+
+On utilisera new au lieu de malloc vu que malloc n'appelle pas le constructeur de l'objet.
+
+!!!!!!!!!!!
+Si B hérite de A:
+
+Pour chaîner les constructeur :
+B::B(int a, s) : A(a, s) {
+}
+et non pas :
+B::B(int a, s)  { // appelle le constructeur de A()
+    A(a, s); // créer un objet temporaire
+}
+
+!!!!!!!!!!!!
+
+
+Group <Multimedia*> au lieu de Group <*Multimedia> !!
+
+
+
+Debugger :
+valgrind ./myprog
 
 --------------------------------------------------------
 

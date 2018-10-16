@@ -9,13 +9,15 @@ class Film : public Video
     int *durationChapters;
 public:
     Film(string name, string fileName, int duration, int numberChapters)
-        : Video(name, fileName, duration), numberChapters(numberChapters)
+        : Video(name, fileName, duration)
     {
-        durationChapters = (int*) malloc(sizeof(int) * numberChapters);
+//        durationChapters = (int*) malloc(sizeof(int) * numberChapters);
+        durationChapters = nullptr;
     }
 
     ~Film() {
-        cout << "Calling destructor Film " << endl;
+//        cout << "Calling destructor Film " << endl;
+        delete[] durationChapters;
     }
 
     void printVariables(ostream & flux) const override {
@@ -26,15 +28,15 @@ public:
         }
     }
 
-    void setDurationChapters(int *durationChapters, int numberChapters) {
+    void setDurationChapters(const int *durationChapters, int numberChapters) {
         this->numberChapters = numberChapters;
 
-        if(this->durationChapters != NULL)
-            free(this->durationChapters);
-        this->durationChapters = NULL;
+        delete[] this->durationChapters;
+        this->durationChapters = nullptr;
 
-        this->durationChapters = (int*) malloc(numberChapters * sizeof(int));
-
+//        this->durationChapters = (int*) malloc(numberChapters * sizeof(int));
+        if(numberChapters > 0)
+            this->durationChapters = new int[numberChapters];
 
         for(int i = 0; i < numberChapters; i++) {
             this->durationChapters[i] = durationChapters[i];
