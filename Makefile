@@ -14,7 +14,7 @@ PROG = MyMultimedia
 #
 # Fichiers sources (NE PAS METTRE les .h ni les .o seulement les .cpp)
 #
-SOURCES = group.cpp film.cpp multimedia.cpp main.cpp
+SOURCES = manager.cpp group.cpp film.cpp multimedia.cpp main.cpp
 
 #
 # Fichiers objets (ne pas modifier sauf si l'extension n'est pas .cpp)

@@ -12,6 +12,11 @@
 #include "video.h"
 #include "film.h"
 #include "group.h"
+#include "manager.h"
+
+// Macro to make it easier to print " - variable_name : value"
+#define debug(x) cerr << "       - " <<#x << " : " << x << endl;
+#define debugs(x, y) cerr << "       - " <<#x << " : " << x << "    - " <<#y << " : " << y << endl;
 
 using namespace std;
 
@@ -45,9 +50,10 @@ int main(int argc, const char* argv[])
 //    delete film;
 
 
-//    Video *video = new Video("video", "video.mp4", 100);
-//    Photo *photo = new Photo("tpt", "tpt.jpg", 213, 100);
-//    Group *group = new Group(string("Vacances"));
+//    shared_ptr<Video> video(new Video("video", "video.mp4", 100));
+//    shared_ptr<Photo> photo(new Photo("tpt", "tpt.jpg", 213, 100));
+//    Group* group(new Group(string("Vacances")));
+
 //    cout << group->getName() << endl;
 //    group->push_back(video);
 //    group->push_back(photo);
@@ -55,6 +61,21 @@ int main(int argc, const char* argv[])
 //    delete group;
 //    photo->printVariables(cout); // Photo n'est pas détruit quand le groupe est détruit
 
+//    debug(photo.use_count());
+//    group->push_back(photo);
+//    group->push_back(video);
+//    group->printGroup();
+//    video.reset();
+//    delete group;
+//    debug(photo.use_count()); // on remarque bien que c'est 1, vu qu'on n'a pas fait de photo.reset()
 
+//    photo->printVariables(cout);
+
+    Manager m;
+    shared_ptr<Multimedia> video = (m.createVideo("video", "video.mp4", 100));
+    shared_ptr<Multimedia> photo = (m.createPhoto("photo", "tpt.jpg", 123, 321));
+
+    video->printVariables(cout);
+    photo->printVariables(cout);
     return 0;
 }

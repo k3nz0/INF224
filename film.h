@@ -11,7 +11,6 @@ public:
     Film(string name, string fileName, int duration, int numberChapters)
         : Video(name, fileName, duration)
     {
-//        durationChapters = (int*) malloc(sizeof(int) * numberChapters);
         durationChapters = nullptr;
     }
 

@@ -1,5 +1,7 @@
 film.cpp
 film.h
+manager.cpp
+manager.h
 photo.h
 video.h
 multimedia.cpp

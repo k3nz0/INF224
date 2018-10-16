@@ -99,8 +99,11 @@ B::B(int a, s)  { // appelle le constructeur de A()
 
 !!!!!!!!!!!!
 
-
 Group <Multimedia*> au lieu de Group <*Multimedia> !!
+
+
+Étape 10 Manager : 
+shared_ptr<Video> n'hérite pas de shared_ptr<Multimedia>
 
 
 
