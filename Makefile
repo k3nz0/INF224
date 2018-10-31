@@ -14,7 +14,7 @@ PROG = MyMultimedia
 #
 # Fichiers sources (NE PAS METTRE les .h ni les .o seulement les .cpp)
 #
-SOURCES = manager.cpp group.cpp film.cpp multimedia.cpp main.cpp
+SOURCES = tcpserver.cpp cppsocket.cpp manager.cpp group.cpp film.cpp multimedia.cpp main.cpp
 
 #
 # Fichiers objets (ne pas modifier sauf si l'extension n'est pas .cpp)
@@ -43,7 +43,7 @@ LDFLAGS =
 # Librairies a utiliser
 # Exemple: LDLIBS = -L/usr/local/qt/lib -lqt
 #
-LDLIBS = 
+LDLIBS = -lpthread
 
 
 ##########################################

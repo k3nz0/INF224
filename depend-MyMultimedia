@@ -1,3 +1,6 @@
+tcpserver.o: cliserv/tcpserver.cpp cliserv/tcpserver.h \
+ cliserv/cppsocket.h
+cppsocket.o: cliserv/cppsocket.cpp cliserv/cppsocket.h
 manager.o: manager.cpp manager.h multimedia.h group.h video.h photo.h \
  film.h
 group.o: group.cpp group.h multimedia.h video.h

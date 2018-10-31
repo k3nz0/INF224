@@ -7,21 +7,31 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <memory>
+#include <sstream>
+
 #include "multimedia.h"
 #include "photo.h"
 #include "video.h"
 #include "film.h"
 #include "group.h"
 #include "manager.h"
+#include "tcpserver.h"
 
-// Macro to make it easier to print " - variable_name : value"
+// Macro to make it easier for print debugging " - variable_name : value"
 #define debug(x) cerr << "       - " <<#x << " : " << x << endl;
 #define debugs(x, y) cerr << "       - " <<#x << " : " << x << "    - " <<#y << " : " << y << endl;
 
 using namespace std;
+using namespace cppu;
+
+
+//#define OLD_VERSION
+
+const int PORT = 1337;
 
 int main(int argc, const char* argv[])
 {
+#ifdef OLD_VERSION
 //    Multimedia *multimedia = new Multimedia(string("nameXY"), string("fileNameXYZ"));
 //    multimedia->printVariables(cout);
 
@@ -78,8 +88,26 @@ int main(int argc, const char* argv[])
     m.createPhoto("photo", "tpt.jpg", 123, 321);
     m.play("vdideo");
 
+#endif
 
+    // cree le TCPServer
+    shared_ptr<TCPServer> server(new TCPServer());
 
+    // cree l'objet qui gère les données
+    shared_ptr<Manager> manager(new Manager());
+
+    // le serveur appelera cette méthode chaque fois qu'il y a une requête
+    server->setCallback(*manager, &Manager::processRequest);
+
+    // lance la boucle infinie du serveur
+    cout << "Starting Server on port " << PORT << endl;
+    int status = server->run(PORT);
+
+    // en cas d'erreur
+    if (status < 0) {
+      cerr << "Could not start Server on port " << PORT << endl;
+      return 1;
+    }
 
 
     return 0;
