@@ -21,27 +21,28 @@ public:
     Manager();
 
 
-    shared_ptr<Multimedia> createPhoto(string name, string fileName, double latitude, double longitude) {
-        multimedia_table[name] = shared_ptr<Photo>(new Photo(fileName, fileName, latitude, longitude));
-        return multimedia_table[name];
+    shared_ptr<Photo> createPhoto(string name, string fileName, double latitude, double longitude) {
+        shared_ptr<Photo> photo_tmp(new Photo(fileName, fileName, latitude, longitude));
+        multimedia_table[name] = photo_tmp ;
+        return photo_tmp;
     }
-
     shared_ptr<Multimedia> createVideo(string name, string fileName, int duration) {
-        multimedia_table[name] = shared_ptr<Video>(new Video("f", "video.mp4", 100));
-        return multimedia_table[name];
+        shared_ptr<Video> video_tmp(new Video(name, fileName, duration));
+        multimedia_table[name] = video_tmp;
+        return video_tmp;
     }
-
-
     shared_ptr<Multimedia> createFilm(string name, string fileName, int duration, int numberChapters) {
-        multimedia_table[name] = shared_ptr<Film>(new Film(fileName, fileName, duration, numberChapters));
-        return multimedia_table[name];
+        shared_ptr<Film> film_tmp(new Film(fileName, fileName, duration, numberChapters));
+        multimedia_table[name] = film_tmp;
+        return film_tmp;
     }
-
-
     shared_ptr<Group> createGroup(string name) {
         group_table[name] = shared_ptr<Group>(new Group(name));
         return group_table[name];
     }
+
+
+
 
     shared_ptr<Multimedia> findMultimedia(string name) {
         auto it = multimedia_table.find(name);
@@ -62,11 +63,11 @@ public:
 
 
     void printVariables(string name) {
-       auto multimedia = findMultimedia(name);
-       if(multimedia == nullptr) {
-           cout << "Error can't find " << name  << " in multimedia_table " << endl;
-           return;
-       }
+        auto multimedia = findMultimedia(name);
+        if(multimedia == nullptr) {
+            cout << "Error can't find " << name  << " in multimedia_table " << endl;
+            return;
+        }
         multimedia->printVariables(cout);
     }
 
@@ -98,29 +99,47 @@ public:
      */
     bool processRequest(TCPConnection& cnx, const string& request, string& response)
     {
-      cerr << "\nRequest: '" << request << "'" << endl;
 
-      // 1) pour decouper la requête:
-      // on peut par exemple utiliser stringstream et getline()
+        cerr << "\nRequest: '" << request << "'" << endl;
+
+        // 1) pour découper la requête:
+        // on peut par exemple utiliser stringstream et getline()
+        stringstream stream(request);
+        ostream response_stream;
+
+        string operation, target;
+        stream >> operation >> target;
+
+        if(operation == "SEARCH") {
+
+        }
+        else if(operation == "PLAY") {
+
+        }
+        else if(operation == "QUIT") {
+            response = "See you soon :)!";
+            return false;
+        }
+        else {
+            // opération incompréhensible
+        }
+        // 2) faire le traitement:
+        // - si le traitement modifie les donnees inclure: TCPLock lock(cnx, true);
+        // - sinon juste: TCPLock lock(cnx);
 
 
-      // 2) faire le traitement:
-      // - si le traitement modifie les donnees inclure: TCPLock lock(cnx, true);
-      // - sinon juste: TCPLock lock(cnx);
+        // 3) retourner la reponse au client:
+        // - pour l'instant ca retourne juste OK suivi de la requête
+        // - pour retourner quelque chose de plus utile on peut appeler la methode print()
+        //   des objets ou des groupes en lui passant en argument un stringstream
+        // - attention, la requête NE DOIT PAS contenir les caractères \n ou \r car
+        //   ils servent à délimiter les messages entre le serveur et le client
 
+        response = "OK: " + request;
+        cerr << "response: " << response << endl;
 
-      // 3) retourner la reponse au client:
-      // - pour l'instant ca retourne juste OK suivi de la requête
-      // - pour retourner quelque chose de plus utile on peut appeler la methode print()
-      //   des objets ou des groupes en lui passant en argument un stringstream
-      // - attention, la requête NE DOIT PAS contenir les caractères \n ou \r car
-      //   ils servent à délimiter les messages entre le serveur et le client
-
-      response = "OK: " + request;
-      cerr << "response: " << response << endl;
-
-      // renvoyer false si on veut clore la connexion avec le client
-      return true;
+        // renvoyer false si on veut clore la connexion avec le client
+        return true;
     }
 };
 

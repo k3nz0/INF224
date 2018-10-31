@@ -43,7 +43,7 @@ son indice (un entier dans notre cas).
 
 
 
-** Question
+### Question
 Le même problème se pose si un accesseur retourne directement ce tableau sans prendre 
 les précautions nécessaires : la encore le contenu du tableau n'est pas récopié 
 et l'appelant peut le modifier à sa guise. 
@@ -51,8 +51,7 @@ Quelle est la solution très simple que propose C/+\+ pour éviter ce problème 
 
 #### Reponse: 
 Il faut que l'accesseur retourne un pointeur de type const int*.
-(attention, il est possible de caster le const int* en int*, cela entraîne un comportement 
-indéfini).
+(attention, il est toujours possible de caster le const int* en int*, cela entraîne un comportement indéfini).
 
 
 
@@ -63,14 +62,16 @@ Parmi les classes précédemment écrites quelles sont celles qu'il faut modifie
  afin qu'il n'y ait pas de fuite mémoire quand on détruit leurs instances ?
 
 #### Reponse :
-La classe Film
- contient une allocation dynamique (malloc). Il faut donc ne pas oublier
-le déstructeur.
+La classe Film contient une allocation dynamique (new). Il ne faut donc pas oublier d'appeler delete dans le déstructeur.
+
 
 ### Etape 11 : Client / serveur
 
 On ajoute la méthode processRequest à notre classe Manager.
 Cette méthode est appelée chaque fois qu'il y a une requête à traiter.
+
+
+## Etape 12 : 
 
 
 
