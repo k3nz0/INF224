@@ -72,10 +72,15 @@ int main(int argc, const char* argv[])
 //    photo->printVariables(cout);
 
     Manager m;
-    shared_ptr<Multimedia> video = (m.createVideo("video", "video.mp4", 100));
-    shared_ptr<Multimedia> photo = (m.createPhoto("photo", "tpt.jpg", 123, 321));
+//    shared_ptr<Multimedia> video = (m.createVideo("video", "video.mp4", 100));
+//    shared_ptr<Multimedia> photo = (m.createPhoto("photo", "tpt.jpg", 123, 321));
+    m.createVideo("video", "video.mp4", 100);
+    m.createPhoto("photo", "tpt.jpg", 123, 321);
+    m.play("vdideo");
 
-    video->printVariables(cout);
-    photo->printVariables(cout);
+
+
+
+
     return 0;
 }

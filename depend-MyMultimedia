@@ -1,4 +1,5 @@
-manager.o: manager.cpp manager.h multimedia.h group.h video.h photo.h
+manager.o: manager.cpp manager.h multimedia.h group.h video.h photo.h \
+ film.h
 group.o: group.cpp group.h multimedia.h video.h
 film.o: film.cpp film.h video.h multimedia.h
 multimedia.o: multimedia.cpp multimedia.h
