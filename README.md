@@ -1,5 +1,7 @@
 # INF224
 
+
+
 ## Partie C++
 
 ### Etape 5 : Traitement générique (en utilisant le polymorphisme) 
@@ -24,11 +26,12 @@ Si vous avez fait correctement ce qui précède, il ne sera plus possible
  d'instancer des objets de la classe de base. Pourquoi ?
 
 #### Reponse: 
+
 La classe Multimedia contient une fonction virtuelle pure, il n'est plus donc possible de l'instancier.
 
 ### Etape 6 : Films et tableaux
 
-** Question :	
+#### Question :
 	Que faut-il faire pour que l'objet Film ait plein contrôle sur ses données 
 et que son tableau de durées des chapitres ne puisse pas être modifié 
 (ou pire, détruit) à son insu ? (c'est l'objet qui doit pouvoir modifier 
@@ -43,7 +46,7 @@ son indice (un entier dans notre cas).
 
 
 
-### Question
+#### Question
 Le même problème se pose si un accesseur retourne directement ce tableau sans prendre 
 les précautions nécessaires : la encore le contenu du tableau n'est pas récopié 
 et l'appelant peut le modifier à sa guise. 
@@ -57,9 +60,8 @@ Il faut que l'accesseur retourne un pointeur de type const int*.
 
 ### Etape 7 : Destruction et copie des objets
 
-** Question :
-Parmi les classes précédemment écrites quelles sont celles qu'il faut modifier
- afin qu'il n'y ait pas de fuite mémoire quand on détruit leurs instances ?
+#### Question :
+Parmi les classes précédemment écrites quelles sont celles qu'il faut modifier afin qu'il n'y ait pas de fuite mémoire quand on détruit leurs instances ?
 
 #### Reponse :
 La classe Film contient une allocation dynamique (new). Il ne faut donc pas oublier d'appeler delete dans le déstructeur.
@@ -69,9 +71,11 @@ La classe Film contient une allocation dynamique (new). Il ne faut donc pas oubl
 
 On ajoute la méthode processRequest à notre classe Manager.
 Cette méthode est appelée chaque fois qu'il y a une requête à traiter.
+On fait le parse de la requête envoyée par le client dans Manager::processRequest.
 
 
-## Etape 12 : 
+
+## Etape 12 : Sérialisation / désérialisation
 
 
 
