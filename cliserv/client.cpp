@@ -11,7 +11,7 @@ using namespace std;
 using namespace cppu;
 
 static const string HOST = "localhost";
-static const int PORT = 3331;
+static const int PORT = 1337;
 
 ///
 /// Lit une requete depuis le Terminal, envoie cette requete au serveur,

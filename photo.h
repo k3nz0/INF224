@@ -16,8 +16,8 @@ public:
 
     void printVariables(ostream & flux) const override {
         Multimedia::printVariables(flux);
-        flux << "latitude : " << latitude << endl;
-        flux << "longitude : " << longitude <<endl;
+        flux << "latitude : " << latitude << "||";
+        flux << "longitude : " << longitude <<"||";
     }
 
     void play() const override {

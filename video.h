@@ -19,7 +19,7 @@ public:
 
     void printVariables(ostream & flux) const override {
         Multimedia::printVariables(flux);
-        flux << "duration : " << duration << endl;
+        flux << "duration : " << duration << "||";
     }
 
     void play() const override {

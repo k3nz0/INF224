@@ -20,10 +20,11 @@ public:
     }
 
     void printVariables(ostream & flux) const override {
+        // Afin d'éviter les \n dans les sockets, on les remplace par "||". Il faudra les parser par la suite côté client
         Video::printVariables(flux);
-        flux << "Number of chapters : " << numberChapters << endl;
+        flux << "Number of chapters : " << numberChapters << "||";
         for(int i = 0; i < numberChapters; i++) {
-            flux << "Duration chapter #" << i + 1 << ": " << durationChapters[i] << endl;
+            flux << "Duration chapter #" << i + 1 << ": " << durationChapters[i] << "||";
         }
     }
 
