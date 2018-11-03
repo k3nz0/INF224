@@ -31,6 +31,28 @@ const int PORT = 3331;
 
 int main(int argc, const char* argv[])
 {
+    // cree le TCPServer
+    shared_ptr<TCPServer> server(new TCPServer());
+
+    // cree l'objet qui gère les données
+    shared_ptr<Manager> manager(new Manager());
+    manager->createVideo("video", "media/video.mp4", 100);
+    manager->createPhoto("photo", "media/tpt.jpg", 123, 321);
+
+    // le serveur appelera cette méthode chaque fois qu'il y a une requête
+    server->setCallback(*manager, &Manager::processRequest);
+
+    // lance la boucle infinie du serveur
+    cout << "Starting Server on port " << PORT << endl;
+    int status = server->run(PORT);
+
+    // en cas d'erreur
+    if (status < 0) {
+      cerr << "Could not start Server on port " << PORT << endl;
+      return 1;
+    }
+
+
 #ifdef OLD_VERSION
 //    Multimedia *multimedia = new Multimedia(string("nameXY"), string("fileNameXYZ"));
 //    multimedia->printVariables(cout);
@@ -81,35 +103,17 @@ int main(int argc, const char* argv[])
 
 //    photo->printVariables(cout);
 
-    Manager m;
+//    Manager m;
 //    shared_ptr<Multimedia> video = (m.createVideo("video", "video.mp4", 100));
 //    shared_ptr<Multimedia> photo = (m.createPhoto("photo", "tpt.jpg", 123, 321));
-    m.createVideo("video", "video.mp4", 100);
-    m.createPhoto("photo", "tpt.jpg", 123, 321);
-    m.play("vdideo");
+//    m.createVideo("video", "video.mp4", 100);
+//    m.createPhoto("photo", "tpt.jpg", 123, 321);
+//    m.play("vdideo");
 
 #endif
 
-    // cree le TCPServer
-    shared_ptr<TCPServer> server(new TCPServer());
 
-    // cree l'objet qui gère les données
-    shared_ptr<Manager> manager(new Manager());
-    manager->createVideo("video", "video.mp4", 100);
-    manager->createPhoto("photo", "tpt.jpg", 123, 321);
 
-    // le serveur appelera cette méthode chaque fois qu'il y a une requête
-    server->setCallback(*manager, &Manager::processRequest);
-
-    // lance la boucle infinie du serveur
-    cout << "Starting Server on port " << PORT << endl;
-    int status = server->run(PORT);
-
-    // en cas d'erreur
-    if (status < 0) {
-      cerr << "Could not start Server on port " << PORT << endl;
-      return 1;
-    }
 
 
     return 0;
