@@ -14,7 +14,9 @@
 
 using namespace std;
 using namespace cppu;
-
+/**
+ * @brief The Manager class
+ */
 class Manager
 {
 private:

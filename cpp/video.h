@@ -5,7 +5,9 @@
 
 using namespace std;
 
-
+/**
+ * @brief The Video class
+ */
 class Video : public Multimedia {
 protected:
     int duration;
@@ -16,24 +18,41 @@ public:
     }
     virtual ~Video() {}
 
+    /**
+     * @brief printVariables
+     * @param flux
+     */
     void printVariables(ostream & flux) const override {
         Multimedia::printVariables(flux);
         flux << "duration : " << duration << "||";
     }
 
+    /**
+     * @brief play
+     */
     void play() const override {
         string command = "mpv " + fileName + " &";
         system(command.c_str());
     }
-
+    /**
+     * @brief getType
+     * @return
+     */
     string getType() const override {
          return string("Video");
     }
-
+    /**
+     * @brief setDuree
+     * @param duration
+     */
     void setDuree(int duration) {
         this->duration = duration;
     }
 
+    /**
+     * @brief getDuration
+     * @return
+     */
     int getDuration() const {
         return duration;
     }

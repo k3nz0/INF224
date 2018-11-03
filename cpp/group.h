@@ -8,13 +8,9 @@
 #include "video.h"
 using namespace std;
 
-
-
-
-#define debug(x) cerr << "       - " <<#x << " : " << x << endl;
-#define debugs(x, y) cerr << "       - " <<#x << " : " << x << "    - " <<#y << " : " << y << endl;
-
-
+/**
+ * @brief The Group class
+ */
 class Group : public list<shared_ptr<Multimedia>>
 {
     string name;
@@ -29,10 +25,17 @@ public:
             it->reset();
         }
     }
-
+    /**
+     * @brief getName returns the name of the group
+     * @return
+     */
     string getName() const {
         return name;
     }
+
+    /**
+     * @brief printGroup call printVariables on the list of Multimedia elements in the same group
+     */
 
     void printGroup() {
         for(auto it = this->begin(); it != this->end(); it++) {
@@ -40,6 +43,10 @@ public:
         }
     }
 
+    /**
+     * @brief setName sets the name of the group
+     * @param name
+     */
     void setName(string name) {
         this->name = name;
     }

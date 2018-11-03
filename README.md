@@ -41,8 +41,8 @@ Il faut ensuite s'assurer de ne pas divulguer l'adresse du tableau interne
 en implémentant une méthode qui retourne un seul élément du tableau suivant 
 son indice (un entier dans notre cas).
 
-Il faut de plus que l'accesseur retourne un pointeur de type const int*.
-(attention, il est toujours possible de caster le const int* en int*, cela entraîne un comportement indéfini).
+Si nous voulons impléemnter un accesseur, ce dernier doit retourner un pointeur de type const int*.
+(attention, il est toujours possible de caster le const int* en int* mais cela entraîne un comportement indéfini !).
 
 
 
@@ -55,6 +55,9 @@ qu'il n'y ait pas de fuite mémoire quand on détruit leurs instances ? `
 #### Réponse :
 La classe Film contient une allocation dynamique (new). Il ne faut donc pas oublier d'appeler delete dans le déstructeur.
 
+### Etape 8 : Créer des groupes
+
+### Etape 9 : Gestion automatique de la mémoire
 
 ### Etape 11 : Client / serveur
 
@@ -65,7 +68,8 @@ Cette méthode est appelée chaque fois qu'il y a une requête à traiter.
 Notons qu'on a modifié les méthodes printVariables de Multimedia afin de remplacer les "endl" par "||".
 Ceci est fait dans le but de pouvoir envoyer les string en totalité via sockets.
 
-On fait le parse de la requête envoyée par le client dans Manager::processRequest et on retourne le résultat dans "response".
+On fait le parse de la requête envoyée par le client dans Manager::processRequest et on retourne le résultat dans le string "response"
+donné en paramètres.
 
 ## Partie Java Swing
 

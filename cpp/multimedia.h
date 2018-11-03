@@ -5,7 +5,9 @@
 #include <iostream>
 
 using namespace std;
-
+/**
+ * @brief The Multimedia class
+ */
 class Multimedia
 {
 protected:
