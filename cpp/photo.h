@@ -16,7 +16,7 @@ public:
     }
 
     /**
-     * @brief printVariables
+     * @brief printVariables affiche les variables d'une photo
      * @param flux
      */
     void printVariables(ostream & flux) const override {

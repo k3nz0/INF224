@@ -57,7 +57,9 @@ La classe Film contient une allocation dynamique (new). Il ne faut donc pas oubl
 
 ### Etape 8 : Créer des groupes
 
+
 ### Etape 9 : Gestion automatique de la mémoire
+
 
 ### Etape 11 : Client / serveur
 
@@ -73,3 +75,13 @@ donné en paramètres.
 
 ## Partie Java Swing
 
+### Etape 1 : Fenêtre principale et quelques interacteurs
+
+### Etape 2:  Menus, barre d'outils et actions
+Nous optons dans la suite pour l'option où on utilise les Actions.
+On crée donc des sous-classes de AbstractAction imbriquée dans notre RemoteControl.
+
+### Etape 3: Intéraction client/serveur
+On s'inspire du code Client.java afin de communiquer avec notre set-top box codée en C++
+
+### Etape 4: Créer Makefile
