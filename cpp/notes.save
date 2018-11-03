@@ -1,0 +1,59 @@
+TODO : 
+Finir question 5.
+
+Pour swing il faut arriver à 11.
+
+-------------------------------------------------------
+
+Comme pour la fonction d'affichage, la fonction pour jouer l'objet ne modifie pas l'objet
+ et elle doit être déclarée dans les classes Photo et Video et dans la 
+classe de base afin de permettre un appel polymorphique sur la hiérarchie de classes.
+Cependant, contrairement à la fonction d'affichage, elle ne peut pas avoir
+ d'implementation au niveau de la classe de base (car a priori chaque type d'objet 
+nécessite un utilitaire différent pour être joué).
+
+Etape 5 : 
+Comment appelle-t'on ce type de méthode et comment faut-il les déclarer ? 
+
+- Une fonction virtuelle est une fonction pour laquelle tu préviens le compilateur
+ que le comportement risque d'être modifié par une classe dérivée.
+
+- Une fonction virtuelle pure (abstraite) est une fonction qui signale au compilateur 
+que tu ne dispose pas des informations nécessaires pour implémenter un comportement 
+"de base" et donc dont le comportement devra être précisé pour les classes dérivées 
+que tu souhaite pouvoir instancier.
+
+
+Dans notre cas il s'agit donc d'une fonction virtuelle pure, puisque chaque type d'objet 
+nécessite un utilitaire différent pour être joué !
+
+
+Question :
+-  Si vous avez fait correctement ce qui précède, il ne sera plus possible d'instancer des objets de la classe de base. Pourquoi ?
+
+La classe Multimedia contient une fonction virtuelle pure, il n'est plus donc possible de l'instancier.
+
+
+- Quelle est la propriété caractéristique de l'orienté objet qui permet de faire cela ?
+Le polymorphisme.
+
+
+- Qu'est-il spécifiquement nécessaire de faire dans le cas du C++ ? 
+Quel est le type des éléments du tableau 
+: est-ce que ce tableau contient les objets ou des pointeurs vers ces objets ? 
+Pourquoi ? 
+Il contient des pointeurs vers les objets.
+
+Comparer à Java. 
+
+
+
+
+
+
+--------------------------------------------------------
+
+Obligatoires :
+	Makefile
+
+

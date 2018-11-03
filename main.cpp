@@ -90,12 +90,6 @@ int main(int argc, const char* argv[])
 
 #endif
 
-    stringstream resp;
-    Manager m = Manager();
-    m.createVideo("video", "video.mp4", 100);
-    m.printVariables("video", resp);
-
-
     // cree le TCPServer
     shared_ptr<TCPServer> server(new TCPServer());
 
