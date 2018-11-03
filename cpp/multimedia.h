@@ -19,6 +19,7 @@ public:
     virtual void printVariables(ostream & flux) const;
 
     virtual void play() const = 0;
+    virtual string getType() const = 0;
 
     string getName() const{
         return name;

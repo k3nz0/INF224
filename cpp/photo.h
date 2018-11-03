@@ -2,7 +2,6 @@
 #define PHOTO_H
 
 #include "multimedia.h"
-#include <stdlib.h>
 
 using namespace std;
 
@@ -24,6 +23,10 @@ public:
         string command = "imagej " + fileName + " &";
         cout << "IMAGE" << endl;
         system(command.c_str());
+    }
+
+    string getType() const override {
+        return string("Photo");
     }
 
     void setLattitude(double lattitude) {

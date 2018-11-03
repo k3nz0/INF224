@@ -1,7 +1,6 @@
 #ifndef VIDEO_H
 #define VIDEO_H
 
-#include <iostream>
 #include "multimedia.h"
 
 using namespace std;
@@ -27,6 +26,9 @@ public:
         system(command.c_str());
     }
 
+    string getType() const override {
+         return string("Video");
+    }
 
     void setDuree(int duration) {
         this->duration = duration;
@@ -35,6 +37,7 @@ public:
     int getDuration() const {
         return duration;
     }
+
 
 };
 
