@@ -59,9 +59,12 @@ La classe Film contient une allocation dynamique (new). Il ne faut donc pas oubl
 ### Etape 11 : Client / serveur
 
 On ajoute la méthode processRequest à notre classe Manager.
+
 Cette méthode est appelée chaque fois qu'il y a une requête à traiter.
-Notons qu'on modifier les méthodes printVariables de Multimedia afin de modifier les "endl" par "||" afin de pouvoir
-envoyer les string en totalité via sockets.
+
+Notons qu'on a modifié les méthodes printVariables de Multimedia afin de remplacer les "endl" par "||".
+Ceci est fait dans le but de pouvoir envoyer les string en totalité via sockets.
+
 On fait le parse de la requête envoyée par le client dans Manager::processRequest et on retourne le résultat dans "response".
 
 ## Partie Java Swing
