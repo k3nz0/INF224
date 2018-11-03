@@ -27,7 +27,7 @@ using namespace cppu;
 
 //#define OLD_VERSION
 
-const int PORT = 1337;
+const int PORT = 3331;
 
 int main(int argc, const char* argv[])
 {
