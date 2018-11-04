@@ -59,6 +59,7 @@ La classe Film contient une allocation dynamique (new). Il ne faut donc pas oubl
 
 
 ### Etape 9 : Gestion automatique de la mémoire
+On introduit dans cette étape l'utilisation des "smart pointers", moyen efficace afin d'éviter la fuite de mémoire.
 
 
 ### Etape 11 : Client / serveur
@@ -83,5 +84,3 @@ On crée donc des sous-classes de AbstractAction imbriquée dans notre RemoteCon
 
 ### Etape 3: Intéraction client/serveur
 On s'inspire du code Client.java afin de communiquer avec notre set-top box codée en C++
-
-### Etape 4: Créer Makefile

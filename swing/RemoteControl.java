@@ -56,12 +56,14 @@ public class RemoteControl
 		menu.add(new JMenuItem(listAction));
 		menu.add(new JMenuItem(closeAction));
 		
+		menuBar.add(menu);
+		
 		menuBar.add(new JMenuItem(searchAction));
 		menuBar.add(new JMenuItem(playAction));
 		menuBar.add(new JMenuItem(listAction));
 		menuBar.add(new JMenuItem(closeAction));
 
-		menuBar.add(menu);
+		
 
 		frame.setJMenuBar(menuBar);
 

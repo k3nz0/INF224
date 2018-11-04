@@ -82,8 +82,22 @@ int main(int argc, const char* argv[])
 //    delete film;
 
 
-//    shared_ptr<Video> video(new Video("video", "video.mp4", 100));
-//    shared_ptr<Photo> photo(new Photo("tpt", "tpt.jpg", 213, 100));
+//    Pour tester la construction par copie, décommentez ça
+//    int numberChapters = 10;
+//    Film *film = new Film("video", "video.mp4", 100, numberChapters);
+//    int duration[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+//    film->setDurationChapters(duration, numberChapters);
+//    Film film2 = (*film);
+
+//    duration[0] = 0, duration[1] = 0;
+//    film->setDurationChapters(duration, numberChapters);
+
+//    film->printVariables(cout);
+//    cout << endl;
+//    film2.printVariables(cout);
+
+//    shared_ptr<Video> video(new Video("video", "media/video.mp4", 100));
+//    shared_ptr<Photo> photo(new Photo("tpt", "media/tpt.jpg", 213, 100));
 //    Group* group(new Group(string("Vacances")));
 
 //    cout << group->getName() << endl;

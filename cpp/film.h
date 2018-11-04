@@ -11,7 +11,7 @@ class Film : public Video
     int *durationChapters;
 public:
     /**
-     * @brief Film hello
+     * @brief Film Film constructor
      * @param name
      * @param fileName
      * @param duration
@@ -22,9 +22,35 @@ public:
     {
         durationChapters = nullptr;
     }
+    /**
+     * @brief Film copy constructor
+     * @param other
+     */
+    Film(const Film &other)
+        : Video(other) {
+        numberChapters = other.numberChapters;
+        if(other.durationChapters != nullptr)
+            this->setDurationChapters(other.durationChapters, other.numberChapters);
+    }
+
+    /**
+     * @brief operator = redefining the operator= to handle deep copies
+     * @param other
+     * @return
+     */
+    // comment this if you want to allow "shallow" copy
+    Film& operator=(const Film &other) {
+        Video::operator=(other);
+        numberChapters = other.numberChapters;
+        delete durationChapters;
+        if(other.durationChapters)
+            this->setDurationChapters(other.durationChapters, other.numberChapters);
+        else
+            durationChapters = nullptr;
+        return *this;
+    }
 
     ~Film() {
-//        cout << "Calling destructor Film " << endl;
         delete[] durationChapters;
     }
     /**
@@ -33,6 +59,7 @@ public:
      */
     void printVariables(ostream & flux) const override {
         // Afin d'éviter les \n dans les sockets, on les remplace par "||". Il faudra les parser par la suite côté client
+
         Video::printVariables(flux);
         flux << "Number of chapters : " << numberChapters << "||";
         for(int i = 0; i < numberChapters; i++) {
@@ -40,7 +67,7 @@ public:
         }
     }
     /**
-     * @brief setDurationChapters
+     * @brief setDurationChapters sets
      * @param durationChapters
      * @param numberChapters
      */
@@ -86,7 +113,13 @@ public:
             return durationChapters[index];
 
     }
-
+    /**
+     * @brief getType
+     * @return
+     */
+    string getType() const override {
+        return string("Film");
+    }
 
 
 };

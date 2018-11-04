@@ -17,6 +17,10 @@ class Group : public list<shared_ptr<Multimedia>>
 
 public:
     Group() {}
+    /**
+     * @brief Group
+     * @param name
+     */
     Group(string name) : name(name) {}
     ~Group() {
         cout << "Group " << name << " is dead ! " << endl;
