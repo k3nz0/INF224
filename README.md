@@ -98,8 +98,17 @@ On crée donc des sous-classes de AbstractAction imbriquée dans notre RemoteCon
 
 ### Etape 3: Intéraction client/serveur
 On s'inspire du code Client.java afin de communiquer avec notre set-top box codée en C++.
+
 Exemple d'utilisation :
-    - SEARCH : écrire le nom de l'objet Multimedia à rechercher dans le "JTextArea"
-    - PLAY : écrire le nom de l'objet Multimedia qu'on veut "jouer". Il sera lancé côté serveur.
-    - LIST : lister tous les objets Multimedia présents dans le manager
-    - CLOSE : Fermer le client swing
+
+    - **SEARCH **:
+        écrire le nom de l'objet Multimedia à rechercher dans le "JTextArea"
+
+    - ** PLAY ** :
+        écrire le nom de l'objet Multimedia qu'on veut "jouer". Il sera lancé côté serveur.
+
+    - ** LIST ** :
+        lister tous les objets Multimedia présents dans le manager
+
+    - ** CLOSE ** :
+        Fermer le client swing
