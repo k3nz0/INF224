@@ -101,7 +101,7 @@ On s'inspire du code Client.java afin de communiquer avec notre set-top box cod�
 
 Exemple d'utilisation :
 
-    - **SEARCH **:
+- **SEARCH **:
         écrire le nom de l'objet Multimedia à rechercher dans le "JTextArea"
 
     - ** PLAY ** :
