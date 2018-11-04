@@ -66,7 +66,7 @@ On introduit dans cette étape l'utilisation des "smart pointers", moyen efficac
 
 ### Etape 10 : Gestion cohérente des données
 On crée une classe Manager capable de gérer les objets Multimedia. C'est un moyen efficace pour en abstraire l'utilisation et pouvoir
-proposer des fonctionnalités telles : rechercher un objet Multimedia, lister toutes les vidéos, etc ...
+proposer des fonctionnalités telles que : rechercher un objet Multimedia, lister toutes les vidéos, etc ...
 
 
 
@@ -94,6 +94,7 @@ donné en paramètres.
 ### Etape 2:  Menus, barre d'outils et actions
 Nous optons dans la suite pour l'option où on utilise les Actions.
 On crée donc des sous-classes de AbstractAction imbriquée dans notre RemoteControl.
+
 
 ### Etape 3: Intéraction client/serveur
 On s'inspire du code Client.java afin de communiquer avec notre set-top box codée en C++
