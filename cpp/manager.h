@@ -28,8 +28,8 @@ public:
 
 
     shared_ptr<Photo> createPhoto(string name, string fileName, double latitude, double longitude);
-    shared_ptr<Multimedia> createVideo(string name, string fileName, int duration);
-    shared_ptr<Multimedia> createFilm(string name, string fileName, int duration, int numberChapters);
+    shared_ptr<Video> createVideo(string name, string fileName, int duration);
+    shared_ptr<Film> createFilm(string name, string fileName, int duration, int numberChapters);
     shared_ptr<Group> createGroup(string name);
 
 

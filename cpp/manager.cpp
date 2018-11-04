@@ -28,7 +28,7 @@ shared_ptr<Photo> Manager::createPhoto(string name, string fileName, double lati
  * @return
  */
 
-shared_ptr<Multimedia> Manager::createVideo(string name, string fileName, int duration) {
+shared_ptr<Video> Manager::createVideo(string name, string fileName, int duration) {
     shared_ptr<Video> video_tmp(new Video(name, fileName, duration));
     multimedia_table[name] = video_tmp;
     return video_tmp;
@@ -42,7 +42,7 @@ shared_ptr<Multimedia> Manager::createVideo(string name, string fileName, int du
  * @param numberChapters
  * @return
  */
-shared_ptr<Multimedia> Manager::createFilm(string name, string fileName, int duration, int numberChapters) {
+shared_ptr<Film> Manager::createFilm(string name, string fileName, int duration, int numberChapters) {
     shared_ptr<Film> film_tmp(new Film(fileName, fileName, duration, numberChapters));
     multimedia_table[name] = film_tmp;
     return film_tmp;
