@@ -56,10 +56,18 @@ qu'il n'y ait pas de fuite mémoire quand on détruit leurs instances ? `
 La classe Film contient une allocation dynamique (new). Il ne faut donc pas oublier d'appeler delete dans le déstructeur.
 
 ### Etape 8 : Créer des groupes
-
+On crée une classe groupe qui hérite d'une liste d'objets.
+Il faut des pointeurs (Multimedia *) dans la liste car la classe Multimedia contient des méthodes virtuelles, on ne peut donc
+pas l'instancier.
 
 ### Etape 9 : Gestion automatique de la mémoire
 On introduit dans cette étape l'utilisation des "smart pointers", moyen efficace afin d'éviter la fuite de mémoire.
+
+
+### Etape 10 : Gestion cohérente des données
+On crée une classe Manager capable de gérer les objets Multimedia. C'est un moyen efficace pour en abstraire l'utilisation et pouvoir
+proposer des fonctionnalités telles : rechercher un objet Multimedia, lister toutes les vidéos, etc ...
+
 
 
 ### Etape 11 : Client / serveur
@@ -67,6 +75,12 @@ On introduit dans cette étape l'utilisation des "smart pointers", moyen efficac
 On ajoute la méthode processRequest à notre classe Manager.
 
 Cette méthode est appelée chaque fois qu'il y a une requête à traiter.
+
+TCPLock est utilisée pour "locker" l'accès aux objets et éviter les problèmes de modification des objets
+dûs à la concurrence des threads.
+Dans notre cas, on appelle le "lock" est pour la lecture, puisque nos commandes ne font
+que lire (pas de création ou de modification de videos, photos...)
+
 
 Notons qu'on a modifié les méthodes printVariables de Multimedia afin de remplacer les "endl" par "||".
 Ceci est fait dans le but de pouvoir envoyer les string en totalité via sockets.
@@ -76,7 +90,6 @@ donné en paramètres.
 
 ## Partie Java Swing
 
-### Etape 1 : Fenêtre principale et quelques interacteurs
 
 ### Etape 2:  Menus, barre d'outils et actions
 Nous optons dans la suite pour l'option où on utilise les Actions.
