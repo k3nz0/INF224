@@ -1,6 +1,18 @@
 # INF224
 
+## Build & Run 
 
+Commencer par lancer le serveur : 
+Dans le dossier `cpp`, lancer : `make run`
+
+Le serveur se mettra en écoute sur le port 3331 (hardcoded) 
+
+Puis lancer le client swing : 
+Dans le dossier `swing`, lancer : `make run`
+
+
+
+Attention à lancer le serveur avant le client Swing ! 
 
 ## Partie C++
 
@@ -62,6 +74,10 @@ pas l'instancier.
 
 ### Etape 9 : Gestion automatique de la mémoire
 On introduit dans cette étape l'utilisation des "smart pointers", moyen efficace afin d'éviter la fuite de mémoire.
+
+Afin d'interdire l'instanciation d'un objet directement avec new, nous pouvons par exemple déclarer
+son constructeur en tant que private, et faire en sorte que la classe de cet objet soit une classe 
+"friend" de la classe Manager.
 
 
 ### Etape 10 : Gestion cohérente des données

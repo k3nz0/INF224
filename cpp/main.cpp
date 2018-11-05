@@ -36,8 +36,13 @@ int main(int argc, const char* argv[])
 
     // crée l'objet qui gère les données
     shared_ptr<Manager> manager(new Manager());
-    manager->createVideo("video", "media/video.mp4", 100);
-    manager->createPhoto("photo", "media/tpt.jpg", 123, 321);
+
+    // création des objets dans le manager
+    shared_ptr<Video> video = manager->createVideo("video", "media/video.mp4", 100);
+    shared_ptr<Photo> photo = manager->createPhoto("photo", "media/tpt.jpg", 123, 321);
+    shared_ptr<Group> group = manager->createGroup("group");
+    group->push_back(video);
+    group->push_back(photo);
 
     server->setCallback(*manager, &Manager::processRequest);
 
@@ -100,14 +105,14 @@ int main(int argc, const char* argv[])
 //    cout << group->getName() << endl;
 //    group->push_back(video);
 //    group->push_back(photo);
-//    group->printGroup();
+//    group->printGroup(cout);
 //    delete group;
 //    photo->printVariables(cout); // Photo n'est pas détruit quand le groupe est détruit
 
 //    debug(photo.use_count());
 //    group->push_back(photo);
 //    group->push_back(video);
-//    group->printGroup();
+//    group->printGroup(cout);
 //    video.reset();
 //    delete group;
 //    debug(photo.use_count()); // on remarque bien que c'est 1, vu qu'on n'a pas fait de photo.reset()

@@ -4,7 +4,7 @@ public class Main
 	static final int DEFAULT_PORT = 3331;
 	static final int WIDTH = 800;
 	static final int HEIGHT = 400;
-	
+
 	public static void main(String argv[])
 	{
 		String host = DEFAULT_HOST;
@@ -16,7 +16,7 @@ public class Main
 		RemoteControl remoteControl = null;
 		try {
 			client = new Client(host, port);
-			remoteControl = new RemoteControl(client, WIDTH, HEIGHT);
+			remoteControl = new RemoteControl(client);
 			remoteControl.display();
 		}
 		catch(Exception e) {

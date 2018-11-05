@@ -3,37 +3,35 @@ import java.awt.BorderLayout;
 import java.awt.event.*;
 import java.awt.Dimension;
 
-public class RemoteControl
+public class RemoteControl extends JFrame
 {
 	private static final long serialVersionUID = 1L;
-	/** Ccontains input to be sent throught sockets */
+	/** Contains input to be sent throught sockets */
+	private static JTextField textField;
+	/** Contains result fetched from socket */
 	private static JTextArea textArea;
-	/** Contains results in html format */	
-	private static JLabel results;
-	private int width, height;
+
 	private Client client;
 
-	public RemoteControl(Client client, int width, int height) {
+	public RemoteControl(Client client) {
 		this.client = client;
-		this.width = width;
-		this.height = height;
 	}
 
-	public void display()
-	{
-		JFrame frame = new JFrame("Remote control");
-		
+	public void display() {
 		// Quit the program when the window is closed
-		frame.addWindowListener(new WindowAdapter()
-		{
-			public void windowClosing(WindowEvent e)
-			{
+		addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
 				System.exit(0);
 			}
 		});
 
-		textArea = new JTextArea(40, 40);
-		results = new JLabel("Result :");
+		textArea = new JTextArea(30, 30);
+		textField = new JTextField("");
+		textField.setColumns(30);
+
+		JScrollPane scrollPane = new JScrollPane(textArea);
+		JToolBar bar = new JToolBar();
+		JPanel panel = new JPanel();
 
 		SearchAction searchAction = new SearchAction("Search");
 		PlayAction playAction = new PlayAction("Play");
@@ -44,137 +42,104 @@ public class RemoteControl
 		JButton playButton = new JButton(playAction);
 		JButton listButton = new JButton(listAction);
 		JButton closeButton = new JButton(closeAction);
-		
-		JScrollPane scrollPane = new JScrollPane(textArea);
-		JPanel panel = new JPanel();
-		
+
 		JMenuBar menuBar = new JMenuBar();
 		JMenu menu = new JMenu("Menu");
-		
 		menu.add(new JMenuItem(searchAction));
 		menu.add(new JMenuItem(playAction));
 		menu.add(new JMenuItem(listAction));
 		menu.add(new JMenuItem(closeAction));
-		
+
 		menuBar.add(menu);
-		
-		menuBar.add(new JMenuItem(searchAction));
-		menuBar.add(new JMenuItem(playAction));
-		menuBar.add(new JMenuItem(listAction));
-		menuBar.add(new JMenuItem(closeAction));
 
-		
-
-		frame.setJMenuBar(menuBar);
+		setJMenuBar(menuBar);
 
 		searchButton.setPreferredSize(new Dimension(100, 30));
 		playButton.setPreferredSize(new Dimension(100, 30));
 		listButton.setPreferredSize(new Dimension(100, 30));
 		closeButton.setPreferredSize(new Dimension(100, 30));
-		
-		panel.setPreferredSize(new Dimension(120, 200));
 
-		panel.add(searchButton);
-		panel.add(playButton);
-		panel.add(closeButton);
-		panel.add(listButton);
+		bar.add(searchButton);
+		bar.add(playButton);
+		bar.add(closeButton);
+		bar.add(listButton);
+		bar.add(textField);
 
+		add(bar, BorderLayout.NORTH);
+		add(scrollPane, BorderLayout.SOUTH);
 
-		frame.add(panel, BorderLayout.WEST);
-		frame.add(scrollPane, BorderLayout.CENTER);
-		frame.add(results, BorderLayout.SOUTH);
-
-		frame.setPreferredSize(new Dimension(width, height));
-		frame.pack();
-		frame.setVisible(true);
+		pack();
+		setVisible(true);
 	}
 
 	String parseResult(String result) {
-		String response = "<html>Result : <br>" + result.replace("||", "<br>") + "</html>";
+		String response = result.replace("||", "\n");
 		return response;
 	}
 
 	/**
-	 * Calls client to send a SEARCH request to the server and shows the result in results JLabel
+	 * Calls client to send a SEARCH request to the server and shows the result in textArea
 	 */
 	class SearchAction extends AbstractAction {
-
 		private static final long serialVersionUID = 201811031717L;
-
 		public SearchAction(String name) {
 			super(name);
 		}
-
 		@Override
-		public void actionPerformed(ActionEvent e)
-		{
-			String response = client.send("SEARCH " + textArea.getText());
+		public void actionPerformed(ActionEvent e) {
+			String response = client.send("SEARCH " + textField.getText());
 			response = parseResult(response);
-			results.setText(response);
+			textArea.append(response);
 		}
-		
+
 	}
 
 	/**
-	 * Calls client to send a PLAY request to the server and shows the result in results JLabel
+	 * Calls client to send a PLAY request to the server and shows the result in textArea
 	 */
-	
+
 	class PlayAction extends AbstractAction {
-
 		private static final long serialVersionUID = 201811031718L;
-
 		public PlayAction(String name) {
 			super(name);
 		}
-
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			String response = client.send("PLAY " + textArea.getText());
+			String response = client.send("PLAY " + textField.getText());
 			response = parseResult(response);
-			results.setText(response);
+			textArea.append(response);
 		}
-		
 	}
 	/**
-	* Calls client to send a LIST request to the server and shows the result in results JLabel
+	* Calls client to send a LIST request to the server and shows the result in textArea
 	*/
 
 	class ListAction extends AbstractAction {
 		private static final long serialVersionUID = 201811031720L;
-
 		public ListAction(String name) {
 			super(name);
 		}
-
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			String response = client.send("LIST");
 			response = parseResult(response);
-			results.setText(response);			
+			textArea.append(response);
 		}
-		
 	}
 
 	/**
 	* Close Java execution
 	*/
-	
+
 	class CloseAction extends AbstractAction {
 		private static final long serialVersionUID = 201811031719L;
-
 		public CloseAction(String name) {
 			super(name);
 		}
-
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.exit(0);
-			
+
 		}
-		
 	}
-
-
-
 }
-

@@ -11,6 +11,7 @@ using namespace std;
 /**
  * @brief The Group class
  */
+
 class Group : public list<shared_ptr<Multimedia>>
 {
     string name;
@@ -41,9 +42,13 @@ public:
      * @brief printGroup call printVariables on the list of Multimedia elements in the same group
      */
 
-    void printGroup() {
+    void printGroup(ostream &out) {
+        out << "--------------------------------------||";
+        out << "Printing group :" << name << "||";
+        out << "--------------------------------------||";
+
         for(auto it = this->begin(); it != this->end(); it++) {
-            (*it)->printVariables(cout);
+            (*it)->printVariables(out);
         }
     }
 

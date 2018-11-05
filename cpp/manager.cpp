@@ -153,21 +153,31 @@ bool Manager::processRequest(TCPConnection& cnx, const string& request, string& 
     if(operation == "SEARCH") {
         shared_ptr<Multimedia> result = findMultimedia(target);
         if(result == nullptr) {
-            response = "No multimedia found with name : " + target;
+            response = "No multimedia found with name : " + target + "||";
         }
         else {
             result->printVariables(response_stream);
             response = response_stream.str();
         }
     }
+    else if(operation == "SEARCH_GROUP") {
+        shared_ptr<Group> result = findGroup(target);
+        if(result == nullptr) {
+            response = "No group found with name : " + target + "||";
+        }
+        else {
+            result->printGroup(response_stream);
+            response = response_stream.str();
+        }
+    }
     else if(operation == "PLAY") {
         shared_ptr<Multimedia> result = findMultimedia(target);
         if(result == nullptr) {
-            response = "No multimedia found with name : " + target;
+            response = "No multimedia found with name : " + target + "||";
         }
         else {
             result->play();
-            response = "Running " + target + " on server !";
+            response = "Running " + target + " on server ! ||";
         }
     }
     else if(operation == "LIST") {
