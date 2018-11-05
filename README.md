@@ -1,6 +1,8 @@
 # INF224
 
-## Build & Run 
+Projet réalisé par Moez EZZEDDINE.
+
+## Build & Run 
 
 Commencer par lancer le serveur : 
 Dans le dossier `cpp`, lancer : `make run`
